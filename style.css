@@ -138,3 +138,53 @@ body {
 .secret-code-form .main-button { margin-top: 0; }
 @media (max-width: 800px) { .story-map { position: sticky; top: 8px; right: auto; width: calc(100% - 24px); margin: 8px auto -45px; display: flex; align-items: center; justify-content: center; overflow-x: auto; transform: none; } .map-label { display: none; } .map-stop { flex: 0 0 auto; } .map-stop span { display: none; } .capsule-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .opening h1 { font-size: 2.5rem; } .capsule-grid { gap: 10px; } .capsule-card { min-height: 135px; } .secret-hearts button { font-size: 46px; } .message-sky { height: 300px; } }
+
+/* Ajustes de toque e leitura para celulares pequenos */
+@media (max-width: 600px) {
+  body { min-width: 320px; }
+  .hero, .section, .poetry-section, .quiz-section, .arrows-section, .final-section, .sky-section { padding: 68px 14px; }
+  .hero { min-height: 92vh; }
+  .hero h1 { font-size: clamp(2.55rem, 13vw, 4rem); line-height: 1.08; }
+  .hero h2 { font-size: 2.8rem; margin: 14px 0; }
+  .hero p { font-size: .92rem; line-height: 1.65; }
+  .main-heart { font-size: 94px; margin: 18px; }
+  .main-button, .arrow-button, .next-button { width: min(100%, 330px); padding: 14px 18px; font-size: .9rem; line-height: 1.35; }
+  .section-title, .poetry-card h2, .arrows-section h2, .final-card h2 { font-size: clamp(2.45rem, 12vw, 3.8rem); line-height: 1.05; margin-bottom: 40px; }
+  .section-lead { margin: -18px auto 28px; font-size: .9rem; line-height: 1.6; }
+  .story-map { width: calc(100% - 16px); margin: 8px auto -34px; padding: 8px 5px; border-radius: 14px; justify-content: flex-start; scrollbar-width: none; }
+  .story-map::-webkit-scrollbar { display: none; }
+  .map-stop { min-width: 44px; justify-content: center; padding: 8px 9px; font-size: 1.15rem; }
+  .timeline { gap: 18px; }
+  .timeline-item { padding: 22px 17px; border-radius: 18px; }
+  .timeline-icon { font-size: 42px; }
+  .timeline-content h3 { font-size: 1.9rem; line-height: 1.15; }
+  .timeline-content p, .final-card p { font-size: .9rem; line-height: 1.7; }
+  .poetry-card, .final-card { padding: 34px 18px; border-radius: 22px; }
+  .poetry { font-size: 1.5rem; line-height: 1.55; }
+  .poetry p { margin-bottom: 20px; }
+  .quiz-container { padding: 22px 14px; border-radius: 20px; }
+  .quiz-top { font-size: .83rem; }
+  #question { font-size: 1rem; margin-bottom: 22px; }
+  .answer-button { min-height: 52px; padding: 13px 10px; font-size: .86rem; }
+  .target-area { height: 220px; }
+  .target-heart { font-size: 105px; }
+  .arrow { font-size: 38px; }
+  .capsule-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .capsule-card { min-height: 125px; padding: 17px 8px; font-size: .78rem; }
+  .capsule-card span { margin-bottom: 9px; font-size: 2rem; }
+  .capsule-message, .secret-message, .sky-message, .wheel-message, .code-message { font-size: 1.25rem; line-height: 1.35; }
+  .secret-hearts { gap: 6px; }
+  .secret-hearts button { padding: 8px; font-size: 42px; }
+  .collection-area { height: 280px; }
+  .collectible { font-size: 30px; }
+  .surprise-message { font-size: 1.55rem; line-height: 1.3; }
+  .message-sky { height: 260px; border-radius: 14px; }
+  .sky-star { font-size: 23px; }
+  .wheel { width: 190px; height: 190px; }
+  .wheel span { font-size: 1.55rem; }
+  .final-heart { width: 145px; height: 145px; margin: 38px auto 26px; }
+  .heart-name { font-size: 1.45rem; }
+  .final-card h3 { font-size: 2rem; }
+  .opening h1 { font-size: 2.35rem; }
+  .opening-heart { font-size: 66px; }
+}
