@@ -166,3 +166,102 @@ setInterval(createBackgroundHeart, 700);
 for (let i = 0; i < 8; i += 1) setTimeout(createBackgroundHeart, i * 200);
 loadQuestion();
 revealElements();
+
+// A abertura só libera a jornada quando o coração é tocado.
+const opening = document.getElementById('opening');
+document.getElementById('openingHeart').addEventListener('click', () => {
+  opening.classList.add('is-hidden');
+  document.getElementById('inicio').scrollIntoView({ behavior: 'smooth' });
+});
+
+// O mapa revela os próximos capítulos conforme a pessoa avança.
+const mapStops = [...document.querySelectorAll('.map-stop')];
+const mapSections = ['inicio', 'capsula', 'historia', 'mensagens', 'quiz', 'final'];
+const unlockMap = (id) => {
+  const index = mapSections.indexOf(id);
+  mapStops.slice(0, index + 2).forEach((stop) => {
+    stop.classList.remove('locked');
+    stop.classList.add('unlocked');
+  });
+  mapStops.forEach((stop) => stop.classList.toggle('active', stop.dataset.map === id));
+};
+mapStops.forEach((stop) => stop.addEventListener('click', (event) => {
+  if (stop.classList.contains('locked')) event.preventDefault();
+}));
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => { if (entry.isIntersecting) unlockMap(entry.target.id); });
+}, { threshold: .35 });
+mapSections.forEach((id) => { const section = document.getElementById(id); if (section) sectionObserver.observe(section); });
+
+// Cápsula do tempo.
+document.querySelectorAll('.capsule-card').forEach((card) => card.addEventListener('click', () => {
+  document.getElementById('capsuleMessage').textContent = card.dataset.capsule;
+  card.classList.add('opened');
+  unlockMap('capsula');
+}));
+
+// Mensagens escondidas nos corações.
+document.querySelectorAll('.secret-hearts button').forEach((heart) => heart.addEventListener('click', () => {
+  document.getElementById('secretMessage').textContent = heart.dataset.message;
+  heart.classList.add('found');
+  unlockMap('mensagens');
+}));
+
+// Mini-jogo de coleta, com novos corações aparecendo em intervalos curtos.
+let collectedLove = 0;
+const collectionArea = document.getElementById('collectionArea');
+const loveScore = document.getElementById('loveScore');
+function spawnCollectible() {
+  if (document.querySelectorAll('.collectible').length >= 5) return;
+  const heart = document.createElement('button');
+  heart.className = 'collectible';
+  heart.type = 'button';
+  heart.textContent = ['❤️', '💖', '💕', '💗'][Math.floor(Math.random() * 4)];
+  heart.style.left = `${Math.random() * 90 + 2}%`;
+  heart.style.top = `${Math.random() * 80 + 3}%`;
+  heart.addEventListener('click', () => {
+    if (heart.classList.contains('collected')) return;
+    heart.classList.add('collected');
+    collectedLove += 1;
+    loveScore.textContent = collectedLove;
+    if (collectedLove >= 12) document.getElementById('surpriseMessage').classList.remove('hidden');
+    setTimeout(() => heart.remove(), 350);
+  });
+  collectionArea.appendChild(heart);
+  setTimeout(() => heart.remove(), 4500);
+}
+setInterval(spawnCollectible, 900);
+for (let i = 0; i < 4; i += 1) setTimeout(spawnCollectible, i * 250);
+
+// Cada estrela revela uma frase diferente.
+const skyMessages = ['Você é muito especial. ❤️', 'Obrigado pelos momentos juntos. 💌', 'Que venham novas lembranças. 🌟', 'Seu sorriso deixa tudo mais bonito. 💖', 'Esta estrela é só para você. ✨'];
+const messageSky = document.getElementById('messageSky');
+skyMessages.forEach((message, index) => {
+  const star = document.createElement('button');
+  star.className = 'sky-star';
+  star.type = 'button';
+  star.textContent = '⭐';
+  star.style.left = `${12 + index * 18}%`;
+  star.style.top = `${20 + (index % 3) * 25}%`;
+  star.addEventListener('click', () => { document.getElementById('skyMessage').textContent = message; });
+  messageSky.appendChild(star);
+});
+
+// Roda das mensagens.
+const wheelMessages = ['💌 Uma mensagem: você ilumina meus dias.', '❤️ Uma lembrança: 18/07 mora no coração.', '😂 Algo engraçado: até o código se apaixonou.', '🌟 Uma surpresa: ainda há muito para viver.', '🎁 Um segredo: você é meu presente favorito.'];
+let wheelRotation = 0;
+document.getElementById('spinButton').addEventListener('click', () => {
+  wheelRotation += 720 + Math.floor(Math.random() * 5) * 72;
+  document.getElementById('wheel').style.transform = `rotate(${wheelRotation}deg)`;
+  setTimeout(() => { document.getElementById('wheelMessage').textContent = wheelMessages[Math.floor(Math.random() * wheelMessages.length)]; }, 3000);
+});
+
+// A data 18/07 é a chave para o capítulo secreto.
+document.getElementById('secretCodeButton').addEventListener('click', () => {
+  const code = document.getElementById('secretCode').value.replace(/\D/g, '');
+  const message = document.getElementById('codeMessage');
+  if (code === '1807') {
+    message.textContent = '🔓 Área desbloqueada! O melhor capítulo ainda é aquele que vamos escrever juntos. ❤️';
+    for (let i = 0; i < 18; i += 1) setTimeout(createSmallHeart, i * 70);
+  } else message.textContent = 'Ainda não... procure a data especial na nossa história. 💭';
+});

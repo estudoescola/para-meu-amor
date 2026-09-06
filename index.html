@@ -8,10 +8,29 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="opening" id="opening">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="opening-content">
+      <p class="eyebrow">Uma história começa aqui...</p>
+      <h1>✨ Toda história especial começa com um pequeno momento...</h1>
+      <button class="opening-heart" id="openingHeart" type="button" aria-label="Começar nossa história">❤️</button>
+      <p class="opening-hint">Clique no coração para começar</p>
+    </div>
+  </div>
   <div class="background-hearts" id="backgroundHearts" aria-hidden="true"></div>
 
+  <nav class="story-map" aria-label="Mapa da história">
+    <p class="map-label">A jornada dos corações</p>
+    <a class="map-stop active" href="#inicio" data-map="inicio">❤️ <span>Início</span></a>
+    <a class="map-stop locked" href="#capsula" data-map="capsula">🌸 <span>Você</span></a>
+    <a class="map-stop locked" href="#historia" data-map="historia">📖 <span>Nossa História</span></a>
+    <a class="map-stop locked" href="#mensagens" data-map="mensagens">✨ <span>Momentos</span></a>
+    <a class="map-stop locked" href="#quiz" data-map="quiz">💌 <span>Mensagens</span></a>
+    <a class="map-stop locked" href="#final" data-map="final">🎁 <span>Surpresa</span></a>
+  </nav>
+
   <main>
-    <section class="hero">
+    <section class="hero" id="inicio">
       <div class="hero-content">
         <div class="small-heart" aria-hidden="true">❤️</div>
         <h1>Para a pessoa mais especial<br>da minha vida ❤️</h1>
@@ -20,6 +39,18 @@
         <p>Algumas histórias começam quando menos esperamos.<br>A nossa começou em um momento simples, mas se tornou algo muito especial para mim. ❤️</p>
         <a class="main-button" href="#historia">💌 Começar nossa história</a>
       </div>
+    </section>
+
+    <section class="section interactive-section" id="capsula">
+      <h2 class="section-title">📦 Nossa Cápsula do Tempo</h2>
+      <p class="section-lead">Abra cada caixinha. Algumas lembranças gostam de ser descobertas com calma.</p>
+      <div class="capsule-grid">
+        <button class="capsule-card" type="button" data-capsule="Uma lembrança: o ensaio da Festa Junina foi o começo de uma história que eu nem sabia que estava esperando. ❤️"><span>🕰️</span><strong>Uma lembrança</strong></button>
+        <button class="capsule-card" type="button" data-capsule="Um momento especial: cada conversa e cada sorriso começou a ganhar um lugar no meu coração. 💭"><span>💭</span><strong>Um momento especial</strong></button>
+        <button class="capsule-card" type="button" data-capsule="Uma mensagem para você: Giovanna, você tornou meus dias mais bonitos só por existir. ❤️"><span>❤️</span><strong>Uma mensagem</strong></button>
+        <button class="capsule-card" type="button" data-capsule="Um sonho para o futuro: continuar colecionando histórias, risadas e dias ao seu lado. 🌟"><span>🌟</span><strong>Um sonho</strong></button>
+      </div>
+      <p class="capsule-message" id="capsuleMessage" aria-live="polite"></p>
     </section>
 
     <section class="section" id="historia">
@@ -40,13 +71,47 @@
       </div>
     </section>
 
-    <section class="poetry-section">
+    <section class="poetry-section" id="mensagens">
       <article class="poetry-card reveal">
         <h2>Algumas palavras que escrevi para você ❤️</h2>
         <div class="poetry">
           <p>Giovanna,</p><p>Se o tempo pudesse parar,<br>eu escolheria alguns momentos<br>apenas para viver novamente.</p><p>Não porque eu queira voltar atrás,<br>mas porque existem momentos<br>que merecem ser sentidos mais de uma vez.</p><p>Seu sorriso transforma dias comuns<br>em lembranças especiais.</p><p>E, sem perceber, você se tornou parte<br>dos meus pensamentos e das minhas melhores lembranças. ❤️</p><p>Talvez eu não consiga explicar tudo apenas com palavras.</p><p>Por isso fiz este pequeno lugar, cheio de cores, corações e um pouco da nossa história.</p><p>Porque algumas pessoas merecem mais do que uma simples mensagem.</p><p>Merecem algo feito especialmente para elas. ❤️</p>
         </div>
       </article>
+    </section>
+
+    <section class="section interactive-section hidden-gems">
+      <h2 class="section-title">💌 Escolha um coração</h2>
+      <p class="section-lead">Nem todo coração guarda um segredo. Descubra os que guardam.</p>
+      <div class="secret-hearts" id="secretHearts">
+        <button type="button" data-message="Você encontrou uma mensagem escondida: seu sorriso é um dos meus lugares favoritos. ❤️">❤️</button>
+        <button type="button" data-message="Você encontrou uma mensagem escondida: obrigado por fazer parte dos meus dias. 💖">💖</button>
+        <button type="button" data-message="Este coração estava tímido, mas deixou um recado: eu te amo. 💕">💕</button>
+        <button type="button" data-message="Mensagem desbloqueada: que venham muitas novas lembranças. 💗">💗</button>
+        <button type="button" data-message="Quase! Mas até os corações vazios ficam bonitos quando estão perto de você. 💓">💓</button>
+      </div>
+      <p class="secret-message" id="secretMessage" aria-live="polite"></p>
+    </section>
+
+    <section class="section collection-section">
+      <h2 class="section-title">🎮 Colecione os corações</h2>
+      <p class="section-lead">Clique nos corações que aparecem. Amor coletado: <strong id="loveScore">0</strong></p>
+      <div class="collection-area" id="collectionArea" aria-label="Área para coletar corações"></div>
+      <p class="surprise-message hidden" id="surpriseMessage">🎁 SURPRESA DESBLOQUEADA! Você encontrou um universo inteiro pensando em você. ❤️</p>
+    </section>
+
+    <section class="sky-section" id="ceu">
+      <h2 class="section-title">🌠 Céu de mensagens</h2>
+      <p class="section-lead">Clique em uma estrela para ouvir o que ela guarda.</p>
+      <div class="message-sky" id="messageSky"></div>
+      <p class="sky-message" id="skyMessage" aria-live="polite"></p>
+    </section>
+
+    <section class="section wheel-section">
+      <h2 class="section-title">🎡 Roda das mensagens</h2>
+      <div class="wheel" id="wheel" aria-label="Roda das mensagens"><span>💌</span><span>❤️</span><span>😂</span><span>🌟</span><span>🎁</span></div>
+      <button class="main-button spin-button" id="spinButton" type="button">✨ GIRAR</button>
+      <p class="wheel-message" id="wheelMessage" aria-live="polite"></p>
     </section>
 
     <section class="poetry-section special-poetry">
@@ -68,6 +133,13 @@
       </div>
     </section>
 
+    <section class="section secret-code-section">
+      <h2 class="section-title">🔐 Código secreto</h2>
+      <p class="section-lead">As pistas estão escondidas na nossa história. Digite a data em que começamos a ficar juntos.</p>
+      <div class="secret-code-form"><input id="secretCode" inputmode="numeric" maxlength="4" placeholder="18/07" aria-label="Código secreto"><button class="main-button" id="secretCodeButton" type="button">Desbloquear</button></div>
+      <p class="code-message" id="codeMessage" aria-live="polite"></p>
+    </section>
+
     <section class="arrows-section">
       <h2>💘 Um pequeno ataque de amor 💘</h2>
       <p>Será que você está preparada para receber todas essas flechas do amor? ❤️</p>
@@ -75,7 +147,7 @@
       <button id="arrowButton" class="arrow-button" type="button">🏹 Clique para lançar as flechas do amor</button>
     </section>
 
-    <section class="final-section">
+    <section class="final-section" id="final">
       <article class="final-card reveal">
         <h2>Para você, Giovanna ❤️</h2>
         <p>Eu fiz este site com um monte de códigos, animações e corações.</p><p>Mas, no final, tudo isso é apenas uma pequena tentativa de transformar em algo visível um pouco do carinho que eu tenho por você.</p><p>Cada coração, cada animação e cada detalhe foi pensado para criar algo especial.</p><p>Porque você merece coisas especiais. 💖</p><p>E se um dia você esquecer o quanto é importante, espero que possa voltar aqui e lembrar que existe alguém que fez um pequeno universo digital pensando em você.</p>
