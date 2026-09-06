@@ -1,0 +1,628 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Giovanna ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #08000d;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* FUNDO */
+#intro {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at center, #4a0028 0%, #16000d 45%, #050006 100%);
+}
+
+/* ESTRELAS */
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* CORAÇÃO CENTRAL */
+.big-heart {
+    position: absolute;
+    font-size: 260px;
+    z-index: 3;
+
+    opacity: 0;
+    transform: scale(0);
+
+    filter: drop-shadow(0 0 40px #ff0066);
+
+    animation: showHeart 2s ease forwards;
+    animation-delay: 5s;
+}
+
+@keyframes showHeart {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* CORAÇÕES PEQUENOS */
+.heart {
+    position: absolute;
+    color: #ff1b68;
+    font-size: 30px;
+
+    z-index: 2;
+
+    filter: drop-shadow(0 0 8px #ff0055);
+
+    transition:
+        left 2.5s ease-in-out,
+        top 2.5s ease-in-out,
+        transform 2.5s ease-in-out,
+        opacity 2s ease;
+}
+
+/* MENSAGEM */
+.message {
+    position: absolute;
+
+    z-index: 5;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    animation: showMessage 2s ease forwards;
+    animation-delay: 7s;
+}
+
+.message h1 {
+    font-size: clamp(35px, 7vw, 80px);
+
+    color: white;
+
+    text-shadow:
+        0 0 10px #ff0055,
+        0 0 30px #ff0055,
+        0 0 60px #ff0055;
+
+    letter-spacing: 4px;
+}
+
+.message p {
+    margin-top: 20px;
+
+    font-size: clamp(18px, 3vw, 30px);
+
+    color: #ffd1df;
+}
+
+@keyframes showMessage {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* BOTÃO */
+.enter-btn {
+    position: absolute;
+
+    bottom: 70px;
+
+    z-index: 10;
+
+    padding: 15px 35px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: linear-gradient(45deg, #ff0055, #ff4f8b);
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    animation: showButton 1s ease forwards;
+    animation-delay: 9s;
+
+    box-shadow: 0 0 30px #ff0055;
+
+    transition: 0.3s;
+}
+
+.enter-btn:hover {
+    transform: scale(1.1);
+
+    box-shadow: 0 0 50px #ff0055;
+}
+
+@keyframes showButton {
+    to {
+        opacity: 1;
+    }
+}
+
+/* SEGUNDA PARTE */
+#love {
+    min-height: 100vh;
+
+    padding: 100px 20px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #08000d,
+            #300018,
+            #12000b
+        );
+}
+
+#love h2 {
+    font-size: clamp(35px, 6vw, 70px);
+
+    color: #ff4f8b;
+
+    margin-bottom: 30px;
+
+    text-shadow: 0 0 20px #ff0055;
+}
+
+.love-text {
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size: clamp(18px, 2.5vw, 25px);
+
+    line-height: 1.8;
+
+    color: #ffe4ec;
+}
+
+/* CARTÕES */
+.cards {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    margin-top: 70px;
+}
+
+.card {
+    width: 280px;
+
+    padding: 35px 25px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 80, 140, 0.4);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 0 25px rgba(255, 0, 80, 0.2);
+
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+
+    box-shadow: 0 0 40px rgba(255, 0, 80, 0.6);
+}
+
+.card .emoji {
+    font-size: 55px;
+
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    color: #ff6b9e;
+
+    margin-bottom: 15px;
+
+    font-size: 25px;
+}
+
+.card p {
+    color: #ffe0ea;
+
+    line-height: 1.6;
+}
+
+/* CORAÇÕES FLUTUANTES */
+.floating-heart {
+    position: fixed;
+
+    bottom: -50px;
+
+    pointer-events: none;
+
+    color: #ff2b70;
+
+    animation: floatUp linear forwards;
+
+    z-index: 100;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+
+    .big-heart {
+        font-size: 170px;
+    }
+
+    .message h1 {
+        letter-spacing: 2px;
+    }
+
+    .enter-btn {
+        bottom: 40px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- TELA INICIAL -->
+
+<section id="intro">
+
+    <!-- CORAÇÃO GIGANTE -->
+    <div class="big-heart">❤️</div>
+
+    <!-- MENSAGEM -->
+    <div class="message">
+        <h1>EU TE AMO,<br>GIOVANNA ❤️</h1>
+
+        <p>Você é uma das coisas mais especiais da minha vida ✨</p>
+    </div>
+
+    <!-- BOTÃO -->
+    <button class="enter-btn" onclick="goLove()">
+        Clique aqui ❤️
+    </button>
+
+</section>
+
+
+<!-- PARTE ESPECIAL -->
+
+<section id="love">
+
+    <h2>Uma mensagem para você ❤️</h2>
+
+    <p class="love-text">
+
+        Giovanna, este pequeno site foi feito especialmente para você.
+        ❤️
+
+        <br><br>
+
+        Assim como todos aqueles pequenos corações se juntam para formar
+        algo maior, cada momento, sorriso e lembrança juntos tornam
+        tudo ainda mais especial.
+
+        <br><br>
+
+        Eu queria criar algo diferente para mostrar o quanto você é
+        importante para mim. ✨
+
+    </p>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="emoji">❤️</div>
+
+            <h3>Você</h3>
+
+            <p>
+                Uma pessoa incrível que merece todos os motivos
+                para sorrir.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="emoji">✨</div>
+
+            <h3>Nós</h3>
+
+            <p>
+                Cada momento pode se transformar em uma lembrança
+                especial.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="emoji">🌹</div>
+
+            <h3>Para sempre</h3>
+
+            <p>
+                Que nunca faltem carinho, felicidade e momentos
+                especiais.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* ==========================
+   CRIAR ESTRELAS
+========================== */
+
+const intro = document.getElementById("intro");
+
+for (let i = 0; i < 100; i++) {
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 2 + "s";
+
+    intro.appendChild(star);
+}
+
+
+/* ==========================
+   CRIAR CORAÇÕES
+========================== */
+
+const hearts = [];
+
+const totalHearts = 80;
+
+for (let i = 0; i < totalHearts; i++) {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML = "❤";
+
+    /* POSIÇÃO ALEATÓRIA */
+
+    heart.style.left =
+        Math.random() * window.innerWidth + "px";
+
+    heart.style.top =
+        Math.random() * window.innerHeight + "px";
+
+
+    /* TAMANHO ALEATÓRIO */
+
+    const size =
+        Math.random() * 25 + 15;
+
+    heart.style.fontSize =
+        size + "px";
+
+
+    intro.appendChild(heart);
+
+    hearts.push(heart);
+}
+
+
+/* ==========================
+   FORMAR O CORAÇÃO
+========================== */
+
+setTimeout(() => {
+
+    const centerX =
+        window.innerWidth / 2;
+
+    const centerY =
+        window.innerHeight / 2;
+
+
+    hearts.forEach((heart, i) => {
+
+        /*
+        Fórmula matemática
+        para desenhar um coração
+        */
+
+        const t =
+            (Math.PI * 2 * i) / totalHearts;
+
+
+        const x =
+            16 * Math.pow(Math.sin(t), 3);
+
+
+        const y =
+            13 * Math.cos(t)
+            - 5 * Math.cos(2 * t)
+            - 2 * Math.cos(3 * t)
+            - Math.cos(4 * t);
+
+
+        const scale =
+            Math.min(
+                window.innerWidth,
+                window.innerHeight
+            ) / 35;
+
+
+        heart.style.left =
+            centerX + x * scale + "px";
+
+
+        heart.style.top =
+            centerY - y * scale + "px";
+
+
+        heart.style.transform =
+            "translate(-50%, -50%)";
+
+
+        /* DESAPARECER */
+
+        setTimeout(() => {
+
+            heart.style.opacity = "0";
+
+        }, 2200);
+
+    });
+
+}, 1500);
+
+
+/* ==========================
+   IR PARA A PRÓXIMA SEÇÃO
+========================== */
+
+function goLove() {
+
+    document
+        .getElementById("love")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* ==========================
+   CORAÇÕES FLUTUANTES
+========================== */
+
+setInterval(() => {
+
+    const heart =
+        document.createElement("div");
+
+    heart.className =
+        "floating-heart";
+
+    heart.innerHTML = "❤";
+
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+
+    heart.style.fontSize =
+        Math.random() * 25 + 15 + "px";
+
+
+    const duration =
+        Math.random() * 5 + 5;
+
+
+    heart.style.animationDuration =
+        duration + "s";
+
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, duration * 1000);
+
+
+}, 700);
+
+</script>
+
+</body>
+</html>
+```
